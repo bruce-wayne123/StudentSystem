@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StudXam.Views.StudentListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:locale="clr-namespace:StudXam.Locale"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout Margin="10" VerticalOptions="Center">
+            <Label Style="{StaticResource HeaderLabelStyle}" Text="{Static locale:Strings.LabelStudentList}" />
+            <CollectionView
+                x:Name="CollectionViewStudent"
+                Margin="10"
+                EmptyView="{Static locale:Strings.NoDataFound}"
+                ItemsSource="{Binding StudentList}"
+                SelectedItem="{Binding SelectedStudent}"
+                SelectionChangedCommand="{Binding StudentSelectedCommand}"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource StudentListFrameStyle}">
+                            <Grid>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource HeaderLabelStyle}"
+                                    Text="{Binding Name}" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource InfoLabelStyle}"
+                                    Text="{Binding Class}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

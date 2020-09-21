@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StudXam.Views.StudentDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:constants="clr-namespace:StudXam.Helpers"
+    xmlns:controls="clr-namespace:StudXam.CommonControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:StudXam.Locale"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="StudentDetail"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout
+            x:Name="StudentDetailStack"
+            Margin="10"
+            Spacing="10">
+            <Label Style="{StaticResource TitleLabelStyle}" Text="{Binding SelectedStudent.Name}" />
+            <ScrollView>
+                <Frame>
+                    <Grid HorizontalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25*" />
+                            <ColumnDefinition Width="75*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabelStudentRollNo}" />
+                        <Entry
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            IsEnabled="False"
+                            Style="{StaticResource ValueEntryStyle}"
+                            Text="{Binding SelectedStudent.RollNo, Mode=TwoWay}" />
+                        <Label
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabelStudentGender}" />
+                        <Entry
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{StaticResource ValueEntryStyle}"
+                            Text="{Binding SelectedStudent.Gender, Mode=TwoWay}" />
+                        <Label
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabelStudentClass}" />
+                        <Entry
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            IsEnabled="{Static constants:GlobalConstants.IsAdminLoggedIn}"
+                            Style="{StaticResource ValueEntryStyle}"
+                            Text="{Binding SelectedStudent.Class, Mode=TwoWay}" />
+                        <Label
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabeBirthDate}" />
+                        <DatePicker
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Date="{Binding SelectedStudent.BirthDate, StringFormat='{0:MMMM d, yyyy }', Mode=TwoWay}" />
+                        <Label
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabelAddress}" />
+                        <Entry
+                            Grid.Row="4"
+                            Grid.Column="1"
+                            Style="{StaticResource ValueEntryStyle}"
+                            Text="{Binding SelectedStudent.Address, Mode=TwoWay}" />
+                        <Label
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabelEmailID}" />
+                        <Entry
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Style="{StaticResource ValueEntryStyle}"
+                            Text="{Binding SelectedStudent.EmailID, Mode=TwoWay}" />
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            IsVisible="{Static constants:GlobalConstants.IsAdminLoggedIn}"
+                            Style="{StaticResource KeyLabelStyle}"
+                            Text="{Static local:Strings.LabelIsAudited}" />
+                        <Switch
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            IsToggled="{Binding SelectedStudent.IsAudited, Mode=TwoWay}"
+                            IsVisible="{Static constants:GlobalConstants.IsAdminLoggedIn}"
+                            VerticalOptions="Start" />
+                        <controls:AttachmentUploadView
+                            Grid.Row="7"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            FileCollectionList="{Binding BindingContext.AttachFileList, Source={x:Reference StudentDetail}}"
+                            HeightRequest="130"
+                            MaxItemsInList="3" />
+                    </Grid>
+                </Frame>
+            </ScrollView>
+            <Button
+                Command="{Binding SubmitCommand}"
+                HorizontalOptions="FillAndExpand"
+                Style="{StaticResource ButtonFormStyle}"
+                Text="{Static local:Strings.LabelUpdate}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StudXam.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:helpers="clr-namespace:StudXam.Helpers"
+    xmlns:locale="clr-namespace:StudXam.Locale"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <AbsoluteLayout Margin="5,0,5,5">
+            <FlexLayout Style="{StaticResource FlexParentStyle}">
+                <Image Source="{Static helpers:GlobalImagePaths.UniversityLogo}" Style="{StaticResource FlexBannerImageStyle}" />
+                <Entry
+                    x:Name="UserNameEntry"
+                    Keyboard="Text"
+                    Placeholder="{Static locale:Strings.LabelUserName}"
+                    ReturnType="Next"
+                    Style="{StaticResource EntryFormStyle}"
+                    Text="{Binding UserName}" />
+                <Entry
+                    x:Name="PinEntry"
+                    IsPassword="True"
+                    Keyboard="Numeric"
+                    MaxLength="4"
+                    Placeholder="{Static locale:Strings.LabelPin}"
+                    ReturnType="Next"
+                    Style="{StaticResource EntryFormStyle}"
+                    Text="{Binding Pin}" />
+                <Button
+                    Command="{Binding SubmitCommand}"
+                    Style="{StaticResource ButtonFormStyle}"
+                    Text="{Static locale:Strings.LabelGlobalSubmit}">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference UserNameEntry}, Path=Text.Length}" Value="0" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="TextColor" Value="Red" />
+                            <Setter Property="BackgroundColor" Value="White" />
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+            </FlexLayout>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>

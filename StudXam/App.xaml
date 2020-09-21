@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="StudXam.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Application.Resources>
+        <Style x:Key="StudentListFrameStyle" TargetType="Frame">
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style x:Key="AttachmentListFrameStyle" TargetType="Frame">
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="Padding" Value="3" />
+        </Style>
+        <Style x:Key="HeaderLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="TitleLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="30" />
+
+        </Style>
+        <Style x:Key="ChildLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource BlackColor}" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+
+        <Style x:Key="AlertLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="InfoLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="Blue" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="KeyLabelStyle" TargetType="Label">
+            <Setter Property="TextColor" Value="OrangeRed" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+        <Style x:Key="ValueEntryStyle" TargetType="Entry">
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <Style x:Key="GlobalSubmitButtonStyle" TargetType="Button">
+            <Setter Property="WidthRequest" Value="20" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="OrangeRed" />
+        </Style>
+        <Style x:Key="EntryFormStyle" TargetType="Entry">
+            <Setter Property="FlexLayout.AlignSelf" Value="Stretch" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Style.Triggers>
+                <Trigger TargetType="Entry" Property="IsFocused" Value="True">
+                    <Setter Property="BackgroundColor" Value="Yellow" />
+                    <!--  multiple Setters elements are allowed  -->
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="ButtonFormStyle" TargetType="Button">
+            <Setter Property="FlexLayout.AlignSelf" Value="Stretch" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            <Setter Property="BackgroundColor" Value="Green" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <Style x:Key="ButtonSubmitStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="WidthRequest" Value="30" />
+            <Setter Property="VerticalOptions" Value="End" />
+            <Setter Property="BackgroundColor" Value="Green" />
+            <Setter Property="BorderColor" Value="Black" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="TextColor" Value="White" />
+        </Style>
+        <Style x:Key="ImageButtonStyle" TargetType="Image">
+            <Setter Property="WidthRequest" Value="25" />
+            <Setter Property="HeightRequest" Value="25" />
+        </Style>
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="WidthRequest" Value="25" />
+            <Setter Property="HeightRequest" Value="25" />
+        </Style>
+        <Style x:Key="FlexParentStyle" TargetType="FlexLayout">
+            <Setter Property="Margin" Value="30,0,30,0" />
+            <Setter Property="AlignItems" Value="Center" />
+            <Setter Property="Direction" Value="Column" />
+            <Setter Property="JustifyContent" Value="SpaceEvenly" />
+        </Style>
+
+        <Style x:Key="FlexBannerImageStyle" TargetType="FlexLayout">
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
+            <Setter Property="HeightRequest" Value="100" />
+            <Setter Property="WidthRequest" Value="100" />
+        </Style>
+    </Application.Resources>
+</Application>

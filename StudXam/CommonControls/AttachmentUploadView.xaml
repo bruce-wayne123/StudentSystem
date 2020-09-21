@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="StudXam.CommonControls.AttachmentUploadView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:helpers="clr-namespace:StudXam.Helpers"
+    xmlns:local="clr-namespace:StudXam.Locale"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:Name="FilePickerPage"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Frame Margin="5" Style="{StaticResource StudentListFrameStyle}">
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100*" />
+                    <ColumnDefinition Width="80" />
+                </Grid.ColumnDefinitions>
+                <CollectionView
+                    EmptyView="{Static local:Strings.NoFileAttached}"
+                    ItemsSource="{Binding FileCollectionList}"
+                    SelectionChanged="CollectionSelectionChanged"
+                    SelectionMode="Single">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource AttachmentListFrameStyle}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="75*" />
+                                        <ColumnDefinition Width="25*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Text="{Binding FileName}" />
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Source="{Static helpers:GlobalImagePaths.DeleteIcon}"
+                                        Style="{StaticResource ImageButtonStyle}">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding BindingContext.DeleteFileCommand, Source={x:Reference FilePickerPage}}" CommandParameter="{Binding .}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Image
+                    x:Name="AddButton"
+                    Grid.Column="1"
+                    Source="{Static helpers:GlobalImagePaths.FabIcon}"
+                    Style="{StaticResource ImageButtonStyle}">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PickFileCommand}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
